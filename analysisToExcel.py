@@ -6,20 +6,30 @@ from DataBase import DataBase
 from openpyxl import Workbook, load_workbook
 
 import pandas as pd
-def findSmaliFolder(decodeFile):
+
+# DECODE_FOLDER='./appDecoded'
+DECODE_FOLDER = os.path.abspath('./res/appDecoded')
+
+print(DECODE_FOLDER)
+
+
+def findSmaliFolder(Appdir):
     folderList = []
-    for fileName in os.listdir(decodeFile):
+    for fileName in os.listdir(Appdir):
         if fileName.find('smali') != -1 :
-            folderList.append(os.path.join(decodeFile,fileName))
+            folderList.append(os.path.join(Appdir,fileName))
     return folderList
 
-def InsertMaindianInfo(decodeFolder):    
+def InsertMaindianInfo():    
     totList ={"apps":[]}
-    for appName in os.listdir(decodeFolder):
-        decodeFile =  os.path.join(decodeFolder,appName)
+    for appName in os.listdir(DECODE_FOLDER):
+        Appdir =  os.path.join(DECODE_FOLDER,appName)
         # if appName in hashInTable : 
-        #     continue
-        samliFiles = findSmaliFolder(decodeFile)
+        #     
+        
+        # 查找smali文件夹
+        
+        samliFiles = findSmaliFolder(Appdir)
         growingIO = Sensors = Umeng = Baidu = Talkingdata = Zhuge = 0
         Amplitude = Kissmetrics = Mixpanel = Heap = GA =  Firebase = 0 
         print(appName)
@@ -71,19 +81,27 @@ def InsertMaindianInfo(decodeFolder):
                     print('  --Firebase') 
                     Firebase = 1  
 #   to print log
+
+
         AppSdkInfo = {"appName":appName,"growingIO":growingIO,"Sensors":Sensors,"Umeng":Umeng,"Baidu":Baidu,"Talkingdata":Talkingdata,"Zhuge":Zhuge,"Amplitude":Amplitude,"Kissmetrics":Kissmetrics,\
                     "Mixpanel":Mixpanel,"Heap":Heap,"GA":GA,"Firebase":Firebase}
+        print(AppSdkInfo)
+        
+        print("push to go on")
+        input()
         tmp = (appName, growingIO,Sensors,Umeng,Baidu,Talkingdata,Zhuge,Amplitude,\
             Kissmetrics,Mixpanel,Heap,GA,Firebase)
-        # ic(tmp)
+        
         totList["apps"].append(AppSdkInfo)
-    ic(totList)
+    
     return totList
         # db.insert("INSERT INTO maidianInfo VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?)",tmp)  
 
 def json2excel(appsInfoList):
     df = pd.DataFrame.from_dict(appsInfoList['apps'])
     df.to_excel('data2.xlsx', index=False)
+
+
 
 
 
@@ -97,8 +115,10 @@ if __name__ == "__main__":
     # 
     
     # outputFile= "./res.xlsx"
-    decodeFolder='./appDecoded'
-    appsInfoList = InsertMaindianInfo(decodeFolder)
-    json2excel(appsInfoList)
+    
+    appsInfoList = InsertMaindianInfo(DECODE_FOLDER)
+    
+    # 重新考虑下json转换的位置
+    # json2excel(appsInfoList)
     
     
