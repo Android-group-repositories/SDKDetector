@@ -14,7 +14,7 @@ from openpyxl import Workbook, load_workbook
 import pandas as pd
 
 # DECODE_FOLDER='./appDecoded'
-DECODE_FOLDER = os.path.abspath('../res/appDecoded')
+DECODE_FOLDER = os.path.abspath('../data/appDecoded')
 
 print(DECODE_FOLDER)
 

@@ -42,7 +42,7 @@ def isSDKField(decodeAppFolder,pkgName,flag):
 
 def main():
     # 解包后的app文件夹
-    decodeAppFolder='../res/appDecoded'
+    decodeAppFolder='../data/appDecoded'
     # 索引关键字段
     
     targetFiledList = ["sharesdk"]
