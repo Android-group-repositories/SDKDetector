@@ -44,6 +44,8 @@ def InsertMaindianInfo():
             # "Zhuge":set(),
             # "Amplitude":set()}
     for appName in os.listdir(DECODE_FOLDER):
+        Umeng = GA = Firebase = sharesdk = yandex =0
+        
         
         # example output: "appDecoded\com.q1.knifesling"
         Appdir =  os.path.join(DECODE_FOLDER,appName)
@@ -55,6 +57,8 @@ def InsertMaindianInfo():
         
         # res = {SDKname:[applist]} 结果使用 sdk->app list的形式输出
         
+        # growingIO = Sensors = Umeng = Baidu = Talkingdata = Zhuge = 0
+        # Amplitude = Kissmetrics = Mixpanel = Heap = GA =  Firebase = 0 
         
         for smaliFile in samliFiles:
             # 检查是否存在 "appDecoded\com.q1.knifesling\com"
@@ -102,12 +106,17 @@ def InsertMaindianInfo():
                 if os.path.exists(os.path.join(smaliFile,'com','yandex','metrica')) :
                     print(' --yandex') 
                     Result['yandex'].add(appName)
-                    Firebase = 1
+                    yandex = 1
                 # ========================
-                
-    # ic(Result)
+        AppSdkInfo = {"appName":appName,
+                "GA":GA,
+                "Firebase":Firebase,
+                "Umeng":Umeng,
+                "sharesdk":sharesdk,
+                "yandex":yandex}
+        totList["apps"].append(AppSdkInfo)
     print(Result)
-    return Result
+    return Result,totList
 #   to print log
 
 
@@ -120,7 +129,7 @@ to
 2     3     13
 3     4     14
 '''    
-EXCEL_PATH = './data.xlsx'
+EXCEL_PATH = './sdk2apk.xlsx'
 def json2excel(appsInfoList,outputFile):
     
     # set to list
@@ -153,10 +162,12 @@ def json2excel(appsInfoList,outputFile):
 if __name__ == "__main__":
     
     
-    appsInfoList = InsertMaindianInfo()
+    appsInfoList,totList = InsertMaindianInfo()
     json2excel(appsInfoList,EXCEL_PATH)
     
-    
-    
+    df = pd.DataFrame.from_dict(totList['apps'])
+    df.to_excel('apk2sdk.xlsx', index=False)
+
+        
     
     

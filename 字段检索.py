@@ -46,7 +46,9 @@ def main():
     # 索引关键字段
     
     targetFiledList = ["sharesdk"]
-    targetFiledList = ["sharesdk","alipay","umeng","paypal","facebook"]+[
+    targetFiledList = ["sharesdk",
+    # "alipay",
+    "umeng","paypal","facebook"]+[
     "yandex",
     # "alipay",
     # "AmazonSDK",
@@ -77,13 +79,14 @@ def main():
     # "startapp",
     # "tapjoy",
     # "tencent",
-    "Twitter",
-    "unity",
+    # "Twitter",
+    # "unity",
     # "VK",
     # "Vungle",
     # "wechat",
     # "ZenDesk",
-    "Zoom,"]
+    # "Zoom,"
+    ]
     # 初始化路
     # targetFiledList = []
     # tmp = os.path.join(smaliFile,'com','umeng')
