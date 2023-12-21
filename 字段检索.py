@@ -48,8 +48,9 @@ def main():
     targetFiledList = ["sharesdk"]
     targetFiledList = ["sharesdk",
     # "alipay",
-    "umeng","paypal","facebook"]+[
-    "yandex",
+    # "umeng","paypal","facebook"
+    ]+[
+    # "yandex",
     # "alipay",
     # "AmazonSDK",
     # "Amplitude",
@@ -61,8 +62,10 @@ def main():
     # "DropBox",
     # "FabricIO",
     # "FBSDK",
-    "flurry",
-    "Google",
+    "ad4screen",
+    "jiubang",
+    # "flurry",
+    # "Google",
     # "here",
     # "ironsource",
     # "kakao",

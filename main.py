@@ -44,7 +44,7 @@ def InsertMaindianInfo():
             # "Zhuge":set(),
             # "Amplitude":set()}
     for appName in os.listdir(DECODE_FOLDER):
-        Umeng = GA = Firebase = sharesdk = yandex =0
+        Umeng = GA = Firebase = sharesdk = yandex =jiubang=ad4screen=0
         
         
         # example output: "appDecoded\com.q1.knifesling"
@@ -107,13 +107,18 @@ def InsertMaindianInfo():
                     print(' --yandex') 
                     Result['yandex'].add(appName)
                     yandex = 1
-                # ========================
+                # ======================== 2023-12-21 updta
+                
+                
+                
         AppSdkInfo = {"appName":appName,
                 "GA":GA,
                 "Firebase":Firebase,
                 "Umeng":Umeng,
                 "sharesdk":sharesdk,
-                "yandex":yandex}
+                "yandex":yandex,
+                "ad4screen":ad4screen,
+                "jiubang":jiubang}
         totList["apps"].append(AppSdkInfo)
     print(Result)
     return Result,totList
