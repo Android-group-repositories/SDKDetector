@@ -28,12 +28,25 @@ def findSmaliFolder(Appdir):
 
 def InsertMaindianInfo():    
     totList ={"apps":[]}
+    
     Result = {"Umeng":set(),
             "sharesdk":set(),
             "Firebase":set(),
             'yandex':set(),
-            "GA":set()}
-    
+            "GA":set(),
+            "ad4screen":set(),
+            "jiubang":set(),
+            "Kissmetrics":set(),
+            "Mixpanel":set(),
+            "Heap":set(),
+            "GrowingIO":set(),
+            "Sensors":set(),
+            "Baidu":set(),
+            "Talkingdata":set(),
+            "Zhuge":set(),
+            "Amplitude":set()}
+    # growingIO = Sensors = Umeng = Baidu = Talkingdata = Zhuge = 0
+    # Amplitude = Kissmetrics = Mixpanel = Heap = GA =  Firebase = 0 
             # "Kissmetrics":set(),
             # "Mixpanel":set(),
             # "Heap":set(),
@@ -45,6 +58,9 @@ def InsertMaindianInfo():
             # "Amplitude":set()}
     for appName in os.listdir(DECODE_FOLDER):
         Umeng = GA = Firebase = sharesdk = yandex =jiubang=ad4screen=0
+        
+        growingIO = Sensors = Umeng = Baidu = Talkingdata = Zhuge = 0
+        Amplitude = Kissmetrics = Mixpanel = Heap = GA =  Firebase = 0 
         
         
         # example output: "appDecoded\com.q1.knifesling"
@@ -108,8 +124,61 @@ def InsertMaindianInfo():
                     Result['yandex'].add(appName)
                     yandex = 1
                 # ======================== 2023-12-21 updta
+                if os.path.exists(os.path.join(smaliFile,'com','ad4screen')) :
+                    print(' --ad4screen') 
+                    Result['ad4screen'].add(appName)
+                    ad4screen = 1
                 
-                
+                if os.path.exists(os.path.join(smaliFile,'com','jiubang')) :
+                    print(' --jiubang') 
+                    Result['jiubang'].add(appName)
+                    jiubang = 1
+                # ===============================添加原版就有的字段
+                if os.path.exists(os.path.join(smaliFile,'com','growingio','android','sdk')) :
+                    print(' --GrowingIO')
+                    growingIO = 1
+                if os.path.exists(os.path.join(smaliFile,'com','sensorsdata','analytics','android','sdk')) :
+                    print(' --Sensors')
+                    Sensors = 1  
+                if os.path.exists(os.path.join(smaliFile,'com','umeng','analytics')) :
+                    print(' --Umeng')  
+                    Umeng = 1
+                if os.path.exists(os.path.join(smaliFile,'com','baidu','mobstat')) :
+                    print(' --Baidu')  
+                    Baidu = 1
+                if os.path.exists(os.path.join(smaliFile,'com','talkingdata')) :
+                    print(' --Talkingdata')  
+                    Talkingdata = 1
+                if os.path.exists(os.path.join(smaliFile,'com','zhuge','analysis')) :
+                    print(' --Zhuge')   
+                    Zhuge =1
+                # Foreign
+                if os.path.exists(os.path.join(smaliFile,'com','amplitude','api')) :
+                    print(' --Amplitude') 
+                    Amplitude =1
+                if os.path.exists(os.path.join(smaliFile,'com','kissmetrics','sdk')) :
+                    print(' --Kissmetrics')
+                    Kissmetrics=1               
+                if os.path.exists(os.path.join(smaliFile,'com','mixpanel','android')) :
+                    print(' --Mixpanel')    
+                    Mixpanel =1           
+                if os.path.exists(os.path.join(smaliFile,'com','heapanalytics','android')) :
+                    print(' --Heap')  
+                    Heap =1
+                # if os.path.exists(os.path.join(smaliFile,'paypal')) :
+                #     print('paypal')  
+                    # Heap =1
+
+                # Google
+                if os.path.exists(os.path.join(smaliFile,'com','google','android','gms','analytics')) :
+                    print('  --GA')  
+                    GA=1
+                if os.path.exists(os.path.join(smaliFile,'com','google','firebase')) :
+                    print('  --Firebase') 
+                    Firebase = 1  
+                    
+                    
+                    
                 
         AppSdkInfo = {"appName":appName,
                 "GA":GA,
@@ -118,9 +187,23 @@ def InsertMaindianInfo():
                 "sharesdk":sharesdk,
                 "yandex":yandex,
                 "ad4screen":ad4screen,
-                "jiubang":jiubang}
+                "jiubang":jiubang,
+                # 
+                "growingIO":growingIO,
+                "Sensors":Sensors,
+                "Baidu":Baidu,
+                "Talkingdata":Talkingdata,
+                "Zhuge":Zhuge,
+                
+                "Amplitude":Amplitude,
+                "Kissmetrics":Kissmetrics,
+                "Mixpanel":Mixpanel,
+                "Heap":Heap}
+        
+        # growingIO = Sensors = Umeng = Baidu = Talkingdata = Zhuge = 0
+        # Amplitude = Kissmetrics = Mixpanel = Heap = GA =  Firebase = 0 
         totList["apps"].append(AppSdkInfo)
-    print(Result)
+    # print(Result)
     return Result,totList
 #   to print log
 

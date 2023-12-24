@@ -1,3 +1,5 @@
+DEBUG = True
+
 import os
 # from dataBase import DataBase123123123
 import json
@@ -44,54 +46,57 @@ def main():
     # 解包后的app文件夹
     decodeAppFolder='../data/appDecoded'
     # 索引关键字段
-    
-    targetFiledList = ["sharesdk"]
-    targetFiledList = ["sharesdk",
-    # "alipay",
-    # "umeng","paypal","facebook"
-    ]+[
-    # "yandex",
-    # "alipay",
-    # "AmazonSDK",
-    # "Amplitude",
-    # "Andriod",
-    # "applovin",
-    # "AppNext",
-    # "appsflyer",
-    # "bytedance",
-    # "DropBox",
-    # "FabricIO",
-    # "FBSDK",
-    "ad4screen",
-    "jiubang",
-    # "flurry",
-    # "Google",
-    # "here",
-    # "ironsource",
-    # "kakao",
-    # "line",
-    # "linkin",
-    # "MixPanel",
-    # "mopub",
-    # "onesignal",
-    # "paypal",
-    # "pinterest",
-    # "Pollfish",
-    # "Snap",
-    # "Square",
-    # "startapp",
-    # "tapjoy",
-    # "tencent",
-    # "Twitter",
-    # "unity",
-    # "VK",
-    # "Vungle",
-    # "wechat",
-    # "ZenDesk",
-    # "Zoom,"
+    GoodKeywords = [
+    # "paypal", #com\paypal 
+    # "facebook", #com\facebook
+    # "alipay", #com\alipay
+    "amazon",
+    # "Amplitude", #com\amplitude\api
+    "andriod",
+    # "applovin", #smali\com\applovin\adview
+    "appNext",
+    # "appsflyer",#\com\appsflyer
+    # "bytedance", #com\bytedance
+    # "DropBox",# com\dropbox
+    # "flurry",#com\appsflyer
+    # "Google", #com\google\ads
+    # "here", 字段太短
+    # "ironsource",# com\ironsource
+    # "kakao", #com\kakao
+    # "line", 字段太短
+    # "linkin", 字段太短
+    "MixPanel",
+    # "mopub", # com\mopub\common
+    "onesignal",
+    # "paypal", #com\paypal
+    "pinterest",
+    # "Pollfish", #com\pollfish
+    # "Snap", # 不太行 找不到
+    # "Square",# com\squareup
+    # "startapp",# com\startapp
+    # "tapjoy",# com\tapjoy
+    # "tencent",# com\tencent
+    # "Twitter", # \com\twitter
+    # "unity",#com\unity
+    # "VK", #字段太短 找不到
+    # "Vungle", # com\vungle
+    "wechat",
+    # "ZenDesk",# com\zendesk
+    "Zoom,"
     ]
+    BadKeywords = [
+                # "ad4screen",
+                # "jiubang",
+                # "sharesdk",
+                # "yandex",
+                # "umeng",
+                "Andriod",
+                "FabricIO",
+                # "FBSDK",
+                ]
+    
     # 初始化路
-    # targetFiledList = []
+    targetFiledList = GoodKeywords+BadKeywords
     # tmp = os.path.join(smaliFile,'com','umeng')
     
     ans=[]
@@ -100,7 +105,11 @@ def main():
         targetFiled = i
         res = {"SDKname":targetFiled}    
         print("\n## sdk name",targetFiled)
-        folder_list = os.listdir(decodeAppFolder)
+        if DEBUG:
+            folder_list = os.listdir(decodeAppFolder)[200:300]
+        else:
+            folder_list = os.listdir(decodeAppFolder)
+        
         # print(folder_list)
         
         for pak in folder_list:
@@ -119,7 +128,7 @@ def main():
             # print(flag)
         print(res)
         ans.append(res)
-    print(ans)
+    # print(ans)
         
 
 
