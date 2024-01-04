@@ -43,56 +43,58 @@ def isSDKField(decodeAppFolder,pkgName,flag):
     
 
 def main():
+    
+    failList = ["linkedin","Pinterest","vk","line","zoom"]
+    
+    # com.axabanque.fr ../data/appdecoded/com.axabanque.fr\smali\uz\a$a.smali
+    
+    
     # 解包后的app文件夹
     decodeAppFolder='../data/appDecoded'
     # 索引关键字段
     GoodKeywords = [
-    # "paypal", #com\paypal 
-    # "facebook", #com\facebook
-    # "alipay", #com\alipay
-    "amazon",
-    # "Amplitude", #com\amplitude\api
-    "andriod",
-    # "applovin", #smali\com\applovin\adview
-    "appNext",
-    # "appsflyer",#\com\appsflyer
-    # "bytedance", #com\bytedance
-    # "DropBox",# com\dropbox
-    # "flurry",#com\appsflyer
-    # "Google", #com\google\ads
-    # "here", 字段太短
-    # "ironsource",# com\ironsource
-    # "kakao", #com\kakao
-    # "line", 字段太短
-    # "linkin", 字段太短
-    "MixPanel",
-    # "mopub", # com\mopub\common
-    "onesignal",
-    # "paypal", #com\paypal
-    "pinterest",
-    # "Pollfish", #com\pollfish
-    # "Snap", # 不太行 找不到
-    # "Square",# com\squareup
-    # "startapp",# com\startapp
-    # "tapjoy",# com\tapjoy
-    # "tencent",# com\tencent
-    # "Twitter", # \com\twitter
-    # "unity",#com\unity
-    # "VK", #字段太短 找不到
-    # "Vungle", # com\vungle
-    "wechat",
-    # "ZenDesk",# com\zendesk
-    "Zoom,"
+    # # "paypal", #com\paypal 
+    # # "facebook", #com\facebook
+    # # "alipay", #com\alipay
+    # "amazon",
+    # # "Amplitude", #com\amplitude\api
+    # "andriod",
+    # # "applovin", #smali\com\applovin\adview
+    # "appNext",
+    # # "appsflyer",#\com\appsflyer
+    # # "bytedance", #com\bytedance
+    # # "DropBox",# com\dropbox
+    # # "flurry",#com\appsflyer
+    # # "Google", #com\google\ads
+    # # "here", 字段太短
+    # # "ironsource",# com\ironsource
+    # # "kakao", #com\kakao
+    # # "line", 字段太短
+    # # "linkin", 字段太短
+    # "MixPanel",
+    # # "mopub", # com\mopub\common
+    # "onesignal",
+    # # "paypal", #com\paypal
+    # "amazon",com\amazon
+    # # "Pollfish", #com\pollfish
+    # # "Snap", # 不太行 找不到
+    # # "Square",# com\squareup
+    # # "startapp",# com\startapp
+    # # "tapjoy",# com\tapjoy
+    # # "tencent",# com\tencent
+    # # "Twitter", # \com\twitter
+    # # "unity",#com\unity
+    # # "VK", #字段太短 找不到
+    # # "Vungle", # com\vungle
+    # "wechat",
+    # # "ZenDesk",# com\zendesk
+    # "Zoom,"
+    # "twitter", com\twitter
+    # "onesignal",com\onesignal
+    # "bytedance"  \com\bytedance
     ]
     BadKeywords = [
-                # "ad4screen",
-                # "jiubang",
-                # "sharesdk",
-                # "yandex",
-                # "umeng",
-                "Andriod",
-                "FabricIO",
-                # "FBSDK",
+                "unity3d"
                 ]
     
     # 初始化路
@@ -106,7 +108,7 @@ def main():
         res = {"SDKname":targetFiled}    
         print("\n## sdk name",targetFiled)
         if DEBUG:
-            folder_list = os.listdir(decodeAppFolder)[200:300]
+            folder_list = os.listdir(decodeAppFolder)
         else:
             folder_list = os.listdir(decodeAppFolder)
         
