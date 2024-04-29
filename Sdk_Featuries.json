@@ -1,0 +1,128 @@
+{
+    "toDetect": [
+        "umeng",
+        "sharesdk",
+        "yandex",
+        "jiubang",
+        "ad4screen",
+        "growingIO",
+        "Sensors",
+        "baidu",
+        "talkingdata",
+        "zhuge",
+        "amplitude",
+        "kissmetrics",
+        "mixpanel",
+        "Heap",
+        "GA",
+        "Firebase",
+        "twitter ",
+        "bytedance",
+        "ironsource ",
+        "onesignal",
+        "vungle",
+        "squareup",
+        "kakao",
+        "applovin",
+        "amazon",
+        "startapp",
+        "appsflyer",
+        "tapjoy ",
+        "dropbox",
+        "unity3d"
+        
+        
+    ],
+    "NotToDetect":[
+        "Store items that are not tested"
+    ],
+    "sdks": {
+        "umeng": [
+            "com.umeng.socialize",
+            "com.umeng.analytics"
+        ],
+        "sharesdk": [
+            "cn.sharesdk"
+        ],
+        "yandex": [
+            "com.yandex.metrica"
+        ],
+        "jiubang": [
+            "com.jiubang"
+        ],
+        "ad4screen": [
+            "com.ad4screen"
+        ],
+        "growingIO": [
+            "com.growingio.android.sdk"
+        ],
+        "Sensors": [
+            "com.sensorsdata.analytics"
+        ],
+        "baidu": [
+            "com.baidu.mobstat"
+        ],
+        "talkingdata": [
+            "com.talkingdata"
+        ],
+        "zhuge": [
+            "com.zhuge.analysis"
+        ],
+        "amplitude": [
+            "com.amplitude.api"
+        ],
+        "kissmetrics": [
+            "com.kissmetrics.sdk"
+        ],
+        "mixpanel": [
+            "com.mixpanel.android"
+        ],
+        "Heap": [],
+        "GA": [
+            "com.google.android.gms.analytics"
+        ],
+        "Firebase": [
+            "com.google.firebase"
+        ],
+        "twitter ": [
+            "com.twitter"
+        ],
+        "bytedance": [
+            "com.bytedance"
+        ],
+        "ironsource ": [
+            "com.ironsource"
+        ],
+        "onesignal": [
+            "com.onesignal"
+        ],
+        "vungle": [
+            "com.vungle"
+        ],
+        "squareup": [
+            "com.squareup"
+        ],
+        "kakao": [
+            "com.kakao"
+        ],
+        "applovin": [],
+        "amazon": [
+            "com.applovin"
+        ],
+        "startapp": [
+            "com.startapp"
+        ],
+        "appsflyer": [
+            "com.appsflyer"
+        ],
+        "tapjoy ": [
+            "com.tapjoy"
+        ],
+        "dropbox": [
+            "com.dropbox"
+        ],
+        "unity3d": [
+            "com.unity3d.ads"
+        ]
+    }
+}
