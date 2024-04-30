@@ -4,7 +4,7 @@ import os
 import pandas as pd
 import itertools
 # DEBUG = 0
-DEBUG = True
+DEBUG = False
 
 def ReadConfJson(path):
     '''
@@ -40,8 +40,8 @@ def ReadConfJson(path):
         data_dict = json.loads(json_data)
     a_toDetect = data_dict["toDetect"]
     d_rawSDks = data_dict["sdks"]
-    print(a_toDetect)
-    print(len(d_rawSDks),d_rawSDks)
+    # print(a_toDetect)
+    # print(len(d_rawSDks),d_rawSDks)
     d_SDksFeaturies={}
     name_list =[ ]
     for key, value in d_rawSDks.items():
@@ -94,7 +94,8 @@ def json2excel(appsInfoList,outputFile):
     # {'apps': [1, 2, 3, 4], 'apps2': [11, 12, 13, 14]}
     for k,v in appsInfoList.items():
         appsInfoList[k]=list(v)
-    print(appsInfoList)
+    if(DEBUG):
+        print(appsInfoList)
     
     # padding
     # {'apps': [1, 2, 3, 4], 'apps2': [11, 12, 13, None], 'app3': [123, 345, None, None]}补充到最大长度
@@ -106,6 +107,7 @@ def json2excel(appsInfoList,outputFile):
     # print(filled_lists)
     
     df = pd.DataFrame.from_dict(filled_lists)
+    # if(DEBUG):
     print(df)
     df.to_excel(outputFile, index=False)
 
@@ -160,14 +162,15 @@ def CheckAllApk(CONF_PATH,DECODEAPP_FOLDER):
         
             
         for smaliFile in a_samliFiles:
-            if not os.path.exists(os.path.join(smaliFile,'com')):
-                continue
-            else :
-                for SDKname in a_toDetect:
-                    if( b_isIntegrated(smaliFile,SDKname,d_SDksFeaturies[SDKname])):
-                        # app 集成 某SDK
-                        d_isAPPIntegrated[SDKname]=1
-                        d_result_sdk2app[SDKname].append(appName)
+            # 有的sdk路径根本就不包含com吧？？？
+            # if not os.path.exists(os.path.join(smaliFile,'com')):
+            #     continue
+            # else :
+            for SDKname in a_toDetect:
+                if( b_isIntegrated(smaliFile,SDKname,d_SDksFeaturies[SDKname])):
+                    # app 集成 某SDK
+                    d_isAPPIntegrated[SDKname]=1
+                    d_result_sdk2app[SDKname].append(appName)
                         
             # print(d_isAPPIntegrated)
         
@@ -190,8 +193,8 @@ def main():
     # json 配置文件 
     CONF_PATH =  "D:\狠狠科研\hels安卓\安卓app解包分析\main\Sdk_Featuries.json"
     d_result_sdk2app,d_result_app2sdk = CheckAllApk(CONF_PATH,DECODEAPP_FOLDER)
-    
-    print(d_result_sdk2app)
+    if(DEBUG):
+        print(d_result_sdk2app)
     df = pd.DataFrame.from_dict(d_result_app2sdk['app'])
     df.to_excel('./apk2sdk.xlsx', index=False)
     json2excel(d_result_sdk2app,'./sdk2apk.xlsx')
