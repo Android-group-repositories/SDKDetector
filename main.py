@@ -188,7 +188,9 @@ def CheckAllApk(CONF_PATH,DECODEAPP_FOLDER):
 # df = pd.DataFrame.from_dict(d_result_app2sdk['app'])
 # df.to_excel('apk2sdk.xlsx', index=False)
 def main():
-    DECODEAPP_FOLDER = os.path.abspath(r"D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded测试")
+    # D:\狠狠科研\hels安卓\apps汇总\appDecoded
+    # DECODEAPP_FOLDER = os.path.abspath(r"D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded测试")
+    DECODEAPP_FOLDER = os.path.abspath(r"D:\狠狠科研\hels安卓\apps汇总\appDecoded")
     
     # json 配置文件 
     CONF_PATH =  "D:\狠狠科研\hels安卓\安卓app解包分析\main\Sdk_Featuries.json"
@@ -196,8 +198,8 @@ def main():
     if(DEBUG):
         print(d_result_sdk2app)
     df = pd.DataFrame.from_dict(d_result_app2sdk['app'])
-    df.to_excel('./apk2sdk.xlsx', index=False)
-    json2excel(d_result_sdk2app,'./sdk2apk.xlsx')
+    df.to_excel('./[2k6]apk2sdk.xlsx', index=False)
+    json2excel(d_result_sdk2app,'./[2k6]sdk2apk.xlsx')
     
     
     

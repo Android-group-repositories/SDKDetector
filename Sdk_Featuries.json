@@ -1,42 +1,114 @@
 {
     "toDetect": [
-        "umeng",
-        "sharesdk",
-        "yandex",
-        "jiubang",
-        "ad4screen",
-        "growingIO",
-        "Sensors",
-        "baidu",
-        "talkingdata",
-        "zhuge",
-        "amplitude",
-        "kissmetrics",
-        "mixpanel",
-        "Heap",
-        "GA",
-        "Firebase",
-        "twitter ",
-        "bytedance",
-        "ironsource ",
-        "onesignal",
-        "vungle",
-        "squareup",
-        "kakao",
-        "applovin",
-        "amazon",
-        "startapp",
-        "appsflyer",
-        "tapjoy ",
-        "dropbox",
+        "wechat-sdk-android", 
+        "unity3dads", 
+        "tiktok", 
+        "snap creative kit", 
+        "pollfish", 
+        "line", 
+        "crashlytics", 
+        "alipay", 
+        "Zendest", 
+        "ZOOM", 
+        "Urban AirShip", 
+        "Stripe", 
+        "RevenuCat", 
+        "Paypal", 
+        "Chartboost", 
+        "Braze", 
+        "Adjust", 
+        "umeng", 
+        "sharesdk", 
+        "yandex", 
+        "jiubang", 
+        "ad4screen", 
+        "growingIO", 
+        "Sensors", 
+        "baidu", 
+        "talkingdata", 
+        "zhuge", 
+        "amplitude", 
+        "kissmetrics", 
+        "mixpanel", 
+        "Heap", 
+        "GA", 
+        "Firebase", 
+        "twitter ", 
+        "bytedance", 
+        "ironsource ", 
+        "onesignal", 
+        "vungle", 
+        "squareup", 
+        "kakao", 
+        "applovin", 
+        "amazon", 
+        "startapp", 
+        "appsflyer", 
+        "tapjoy ", 
+        "dropbox", 
         "unity3d"
-        
-        
+
     ],
     "NotToDetect":[
         "Store items that are not tested"
     ],
     "sdks": {
+        "wechat-sdk-android": [
+            "com.tencent.mm.opensdk"            ,
+            "com.tencent.mm.sdk"
+        ],
+        "unity3dads": [
+            "com.unity3d.ads"            
+        ],
+        "tiktok": [
+            "com.bytedance.sdk"            
+        ],
+        "snap creative kit": [
+            "com.snap.creativekit"            
+        ],
+        "pollfish": [
+            "com.pollfish"            
+        ],
+        "line": [
+            "com.linecorp.linesdk"            
+        ],
+        "crashlytics": [
+            "com.google.firebase.crashlytics"            
+        ],
+        "alipay": [
+            "com.alipay.sdk"            
+        ],
+        "Zendest": [
+            "zendesk.support"            
+        ],
+        "ZOOM": [
+            "uz.zoom.sdk"
+        ],
+        "Urban AirShip": [
+            "com.urbanairship"
+            
+        ],
+        "Stripe": [
+            "com.stripe"
+            
+        ],
+        "RevenuCat": [
+            "com.revenuecat",
+            "com.revenuecat.purchases"
+        ],
+        "Paypal": [
+            "com.paypal"
+        ],
+        "Chartboost": [
+            "com.chartboost"
+        ],
+        "Braze": [
+            "com.braze"
+        ],
+        "Adjust": [
+            "com.adjust.sdk",
+            "com.adjust"
+        ],
         "umeng": [
             "com.umeng.socialize",
             "com.umeng.analytics"
