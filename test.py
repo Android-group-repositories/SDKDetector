@@ -123,9 +123,11 @@ def findSmaliFolder(Appdir):
     list: 包含所有找到的含有 'smali' 字段的文件夹路径的列表。
     """
     folderList = []
-    for fileName in os.listdir(Appdir):
-        if fileName.find('smali') != -1 :
-            folderList.append(os.path.join(Appdir,fileName))
+    print(Appdir)
+    if os.path.isdir(Appdir):
+        for fileName in os.listdir(Appdir):
+            if fileName.find('smali') != -1 :
+                folderList.append(os.path.join(Appdir,fileName))
     return folderList
 
 def CheckAllApk(CONF_PATH,DECODEAPP_FOLDER):
@@ -189,23 +191,48 @@ def CheckAllApk(CONF_PATH,DECODEAPP_FOLDER):
 # df.to_excel('apk2sdk.xlsx', index=False)
 # D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded[202458]
 def main():
+    TheList = [
+"AdMobApp",
+"Adjust",
+"Amplitude",
+"Firebase",
+"Google",
+"InMobiApp",
+"Twitter_4J",
+"Twitter_Kit",
+"Umeng",
+"Yandex_metrica",
+"apploving",
+"unknown",]
     # D:\狠狠科研\hels安卓\apps汇总\appDecoded
     # DECODEAPP_FOLDER = os.path.abspath(r"D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded测试")
     # DECODEAPP_FOLDER = os.path.abspath(r"D:\狠狠科研\hels安卓\apps汇总\appDecoded")
     DECODEAPP_FOLDER = os.path.abspath(r"D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded[202458]")
-    
-    
-    
-    # json 配置文件 
     CONF_PATH =  "D:\狠狠科研\hels安卓\安卓app解包分析\main\Sdk_Featuries.json"
-    # CONF_PATH = "D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded[202458]"
-    d_result_sdk2app,d_result_app2sdk = CheckAllApk(CONF_PATH,DECODEAPP_FOLDER)
-    if(DEBUG):
-        print(d_result_sdk2app)
-    df = pd.DataFrame.from_dict(d_result_app2sdk['app'])
-    df.to_excel(r"D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded[202458]/[2k6]apk2sdk.xlsx", index=False)
-    json2excel(d_result_sdk2app,r"D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded[202458]/[2k6]apk2sdk.xlsx/[2k6]sdk2apk.xlsx")
     
+    for sdkName in TheList:
+        
+        # json 配置文件 
+        tmp_decodeapp_folder = os.path.join(DECODEAPP_FOLDER,sdkName)
+        
+        
+        
+        print(tmp_decodeapp_folder)
+        path1 = os.path.join(tmp_decodeapp_folder,"["+sdkName+"]apk2sdk.xlsx")
+        path2 = os.path.join(tmp_decodeapp_folder,"["+sdkName+"]sdk2apk.xlsx")
+        print(path1,path2)
+        
+        d_result_sdk2app,d_result_app2sdk = CheckAllApk(CONF_PATH,tmp_decodeapp_folder)
+        if(DEBUG):
+            print(d_result_sdk2app)
+        df = pd.DataFrame.from_dict(d_result_app2sdk['app'])
+        path1 = os.path.join(DECODEAPP_FOLDER,"output","["+sdkName+"]apk2sdk.xlsx")
+        
+        path2 = os.path.join(DECODEAPP_FOLDER,"output","["+sdkName+"]sdk2apk.xlsx")
+        # print(path1,path2)
+        df.to_excel(path1, index=False)
+        json2excel(d_result_sdk2app,path2)
+        
     
     
     
