@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## simple usage
 
 ```python
@@ -49,4 +50,3 @@ df = pd.DataFrame.from_dict(d_result_app2sdk['app'])
     df.to_excel(r"D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded[202458]/[2k6]apk2sdk.xlsx", index=False)
     json2excel(d_result_sdk2app,r"D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded[202458]/[2k6]apk2sdk.xlsx/[2k6]sdk2apk.xlsx")
 ```
-
