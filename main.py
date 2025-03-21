@@ -195,11 +195,6 @@ def main():
          output_folder = r'output\libscan',
          processes = 1,
          model = 'multiple')
-
-
-
-    
-    
     # ========================   手工方法 ==========================================
     CONF_PATH =  "./Sdk_Featuries.json"
     
