@@ -3,6 +3,7 @@ import json
 import os
 import pandas as pd
 import itertools
+from LibScanLib import analyzer
 # DEBUG = 0
 DEBUG = False
 
@@ -179,26 +180,29 @@ def CheckAllApk(CONF_PATH,DECODEAPP_FOLDER):
         # d_isAPPIntegrated.update({"appName" :appName})
         d_isAPPIntegrated = {"appName" :appName, **d_isAPPIntegrated}
         d_result_app2sdk['app'].append(d_isAPPIntegrated)
-    # ==================================================================
-    # print(d_result_sdk2app)
-    # json2excel(d_result_sdk2app,'./sdk2apk.xlsx')
+
     return d_result_sdk2app,d_result_app2sdk
 
-# print(d_result_sdk2app)
-# df = pd.DataFrame.from_dict(d_result_app2sdk['app'])
-# df.to_excel('apk2sdk.xlsx', index=False)
-# D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded[202458]
+
 def main():
-    # D:\狠狠科研\hels安卓\apps汇总\appDecoded
-    # DECODEAPP_FOLDER = os.path.abspath(r"D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded测试")
-    # DECODEAPP_FOLDER = os.path.abspath(r"D:\狠狠科研\hels安卓\apps汇总\appDecoded")
+    
     DECODEAPP_FOLDER = os.path.abspath(r"D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded[202458]")
+    APP_FOLDER = os.path.abspath(r"D:\狠狠科研\hels安卓\安卓app解包分析\data\app[202458]")
+    # ========================   libscan  ==========================================
+    analyzer(lib_folder = r'libs',
+         lib_dex_folder = DECODEAPP_FOLDER,
+         apk_folder = APP_FOLDER,
+         output_folder = r'output\libscan',
+         processes = 1,
+         model = 'multiple')
+
+
+
     
     
+    # ========================   手工方法 ==========================================
+    CONF_PATH =  "./Sdk_Featuries.json"
     
-    # json 配置文件 
-    CONF_PATH =  "D:\狠狠科研\hels安卓\安卓app解包分析\main\Sdk_Featuries.json"
-    # CONF_PATH = "D:\狠狠科研\hels安卓\安卓app解包分析\data\appDecoded[202458]"
     d_result_sdk2app,d_result_app2sdk = CheckAllApk(CONF_PATH,DECODEAPP_FOLDER)
     if(DEBUG):
         print(d_result_sdk2app)
